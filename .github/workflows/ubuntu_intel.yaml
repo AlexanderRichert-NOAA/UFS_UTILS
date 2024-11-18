@@ -10,11 +10,12 @@ defaults:
 # Set I_MPI_CC/F90 so IntelLLVM is used.
 env:
   cache_key: intel
-  CC: mpiicc
-  FC: mpiifort
-  CXX: mpiicpc
+  CC: mpiicx
+  FC: mpiifx
+  CXX: mpiicpx
   I_MPI_CC: icx
   I_MPI_F90: ifx
+  I_MPI_CXX: icpx
 
 # The jobs are split into:
 # 1. a dependency build step (setup), and
