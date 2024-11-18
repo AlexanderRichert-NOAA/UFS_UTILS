@@ -70,6 +70,7 @@ jobs:
           spack config add "packages:mpi:require:intel-oneapi-mpi"
           intel_mpi_version=$(basename $(realpath /opt/intel/oneapi/mpi/latest))
           sed -i "s|^  packages:|  packages:\n    intel-oneapi-mpi:\n      buildable: false\n      externals:\n      - spec: intel-oneapi-mpi@${intel_mpi_version}\n        prefix: /opt/intel/oneapi|" $SPACK_ENV/spack.yaml
+          spack config add "packages:python:require:'@3.11'"
           cat $SPACK_ENV/spack.yaml
           spack concretize
           spack install --dirty --show-log-on-error --fail-fast
