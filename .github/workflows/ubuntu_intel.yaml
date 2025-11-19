@@ -61,7 +61,7 @@ jobs:
           sudo mv /usr/local /usr/local_mv
           git clone -c feature.manyFiles=true https://github.com/spack/spack.git
           source spack/share/spack/setup-env.sh
-          spack env create ufs_utils-env spack_ci.yaml
+          spack env create ufs_utils-env ci/spack_ci.yaml
           spack env activate ufs_utils-env
           spack compiler find
           sudo apt install cmake
