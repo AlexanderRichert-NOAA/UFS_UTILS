@@ -47,7 +47,7 @@ jobs:
         run: |
           git clone -c feature.manyFiles=true https://github.com/spack/spack.git
           source spack/share/spack/setup-env.sh
-          spack env create ufs_utils-env ci/spack_ci.yaml
+          spack env create ufs_utils-env ci/spack.yaml
           spack env activate ufs_utils-env
           spack config add "packages:all:prefer:['%gcc']"
           sudo apt install cmake
