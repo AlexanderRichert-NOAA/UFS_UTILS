@@ -69,6 +69,7 @@ jobs:
           spack config add "packages:all:prefer:['%oneapi']"
           spack config add "packages:fortran:require:'intel-oneapi-compilers'"
           spack config add "packages:mpi:require:intel-oneapi-mpi"
+          spack external find --not-buildable gmake
           intel_mpi_version=$(basename $(realpath /opt/intel/oneapi/mpi/latest))
           sed -i "s|^  packages:|  packages:\n    intel-oneapi-mpi:\n      buildable: false\n      externals:\n      - spec: intel-oneapi-mpi@${intel_mpi_version}\n        prefix: /opt/intel/oneapi|" $SPACK_ENV/spack.yaml
           icx_path=$(grep -oP "/opt/intel/.*/icx" $SPACK_ENV/spack.yaml)
