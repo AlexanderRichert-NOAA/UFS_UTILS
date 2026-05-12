@@ -14,6 +14,7 @@ jobs:
             submodules: recursive
 
       - name: build
+        shell: bash
         run: |
           . /entrypoint.sh
           export CC=mpicc
@@ -24,6 +25,7 @@ jobs:
           cmake --install build
 
       - name: ctest
+        shell: bash
         run: |
           cd ufs_utils
           ctest --test-dir build --verbose --rerun-failed --output-on-failure
