@@ -7,7 +7,7 @@ jobs:
     # Dependencies are preinstalled in a container image.
     # For available images, see https://github.com/orgs/NOAA-EMC/packages?tab=packages&q=ufs-utils.
     # See https://github.com/NOAA-EMC/ci-common-build-cache/#using-container-images for further container usage instructions.
-    container: ghcr.io/noaa-emc/ci-common-build-cache/ufs-utils-ubuntu-24.04-oneapi-2025.3-intel-oneapi-mpi-2021.17@sha256:44654eefeb804163faf7cd9236428b2a1f1a05cbb76c5b2338c53b39336b0ae3
+    container: ghcr.io/noaa-emc/ci-common-build-cache/ufs-utils-ubuntu-24.04-oneapi-2025.3-intel-oneapi-mpi-2021.17@sha256:805507ecf222358a287a43dc813a9cda4eb3579b085a4e4601fed46523eacb1a
 
     steps:
       - name: checkout
