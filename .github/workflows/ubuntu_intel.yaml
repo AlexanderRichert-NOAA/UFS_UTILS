@@ -7,7 +7,7 @@ jobs:
     # Dependencies are preinstalled in a container image.
     # For available images, see https://github.com/orgs/NOAA-EMC/packages?tab=packages&q=ufs-utils.
     # See https://github.com/NOAA-EMC/ci-common-build-cache/#using-container-images for further container usage instructions.
-    container: ghcr.io/noaa-emc/ci-common-build-cache/ufs-utils-ubuntu-24.04-oneapi-2025.3-intel-oneapi-mpi-2021.17@sha256:4a12d90e613252d22fbe39fd46e5373bb665d23e4d39afee01c2ed04e65d8478
+    container: ghcr.io/noaa-emc/ci-common-build-cache/ufs-utils-ubuntu-24.04-oneapi-2025.3-intel-oneapi-mpi-2021.17@sha256:44654eefeb804163faf7cd9236428b2a1f1a05cbb76c5b2338c53b39336b0ae3
 
     steps:
       - name: checkout
@@ -34,10 +34,6 @@ jobs:
         shell: bash
         run: |
           . /entrypoint.sh
-          echo $PATH
-          ls /opt/intel/oneapi/mpi/2021.17/bin
-          dpkg -L intel-oneapi-mpi-devel-2021.17
-          which mpiicx
           ############################
           ## Modify Spack installation, if needed
           ##
