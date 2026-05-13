@@ -35,7 +35,7 @@ jobs:
         shell: bash
         run: |
           . /entrypoint.sh
-          spack uninstall --force gcc-runtime intel-oneapi-runtime # prevents CMake config warnings
+          spack uninstall --force --yes-to-all gcc-runtime intel-oneapi-runtime # prevents CMake config warnings
           ############################
           ## Modify Spack installation, if needed
           ##
