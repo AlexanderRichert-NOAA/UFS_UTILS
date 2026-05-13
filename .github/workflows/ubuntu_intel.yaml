@@ -34,6 +34,10 @@ jobs:
         shell: bash
         run: |
           . /entrypoint.sh
+          echo $PATH
+          ls /opt/intel/oneapi/mpi/2021.17/bin
+          dpkg -L intel-oneapi-mpi-devel-2021.17
+          which mpiicx
           ############################
           ## Modify Spack installation, if needed
           ##
