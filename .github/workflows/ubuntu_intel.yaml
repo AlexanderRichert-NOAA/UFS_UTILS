@@ -29,6 +29,7 @@ jobs:
           mpi-version: 2021.17
           mpi-wrapper-setup: oneapi
           compiler-setup: oneapi
+          configure-gcc: false
 
       - name: build
         shell: bash
