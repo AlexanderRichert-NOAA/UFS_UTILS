@@ -16,6 +16,10 @@ jobs:
             path: ufs_utils
             submodules: recursive
 
+      - name: build
+        shell: bash
+        run: apt update && apt install sudo
+
       - name: "Install Intel compilers & MPI"
         uses: NOAA-EMC/ci-install-intel-toolkit@develop
         with: # Match versions to container configuration
