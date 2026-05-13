@@ -28,6 +28,7 @@ jobs:
           install-mpi: true
           mpi-version: 2021.17
           mpi-wrapper-setup: oneapi
+          compiler-setup: oneapi
 
       - name: build
         shell: bash
