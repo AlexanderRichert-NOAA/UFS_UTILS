@@ -4,7 +4,10 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   ufs_utils:
     runs-on: ubuntu-24.04
-    container: ghcr.io/noaa-emc/ci-common-build-cache/ufs-utils-ubuntu-24.04-gcc-13-mpich-x:latest
+    # Dependencies are preinstalled in a container image.
+    # For available images, see https://github.com/orgs/NOAA-EMC/packages?tab=packages&q=ufs-utils.
+    # See https://github.com/NOAA-EMC/ci-common-build-cache/#using-container-images for further container usage instructions.
+    container: ghcr.io/noaa-emc/ci-common-build-cache/ufs-utils-ubuntu-24.04-gcc-13-mpich-x@sha256:3a040d96c4030f6d2c23570d5382da80a5b07282e7297d470a37ef0c2f043849
 
     steps:
       - name: checkout
@@ -17,15 +20,26 @@ jobs:
         shell: bash
         run: |
           . /entrypoint.sh
+          ############################
+          ## Modify Spack installation, if needed
+          ##
+          ## For `swap-package` custom Spack command documentation,
+          ## see https://github.com/NOAA-EMC/spack-helpers#modify-package-spec-swap-package.
+          ## To request a package addition or update , create an issue or PR at
+          ## https://github.com/NOAA-EMC/ci-common-build-cache/.
+          ##
+          ## Configure a different version/build options for a package:
+          #spack swap-package foo@1.2.3
+          ## Configure an additional package not already in Spack:
+          #spack add bar@4.5.6
+          ## Concretize environment and run the installation:
+          #spack concretize --fresh
+          #spack install --only-concrete
+          ############################
           export CC=mpicc
           export FC=mpif90
           cd ufs_utils
           cmake -S . -B build -DCMAKE_INSTALL_PREFIX=install
-          cmake --build build -j4 --verbose
+          cmake --build build --parallel 4 --verbose
           cmake --install build
-
-      - name: ctest
-        shell: bash
-        run: |
-          cd ufs_utils
           ctest --test-dir build --verbose --rerun-failed --output-on-failure
